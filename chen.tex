@@ -9,25 +9,84 @@
 \input{aux/commands}                   % add commands here
 \addbibresource{aux/bibliography.bib}  % add references here
 %\usepackage{package}                  % add packages here
+\usepackage{parskip}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \title[Short title]{Full title}
 
-\author[A.~Medina-Mardones]{Anibal~M.~Medina-Mardones}
-\address{A.M-M., Universit\'e Sorbonne Paris Nord \and Max Planck Institute for Mathematics}
-\email{\href{mailto:medina-mardones@math.univ-paris13.fr}{medina-mardones@math.univ-paris13.fr}}
+%\author[A.~Medina-Mardones]{Anibal~M.~Medina-Mardones}
+%\address{A.M-M., Universit\'e Sorbonne Paris Nord \and Max Planck Institute for Mathematics}
+%\email{\href{mailto:medina-mardones@math.univ-paris13.fr}{medina-mardones@math.univ-paris13.fr}}
 
-\date{\today}
-\subjclass[2020]{TBW}
-\keywords{TBW}
+%\date{\today}
+%\subjclass[2020]{TBW}
+%\keywords{TBW}
 
 \begin{document}
-	\input{sec/abstract}
-	\maketitle
-	\input{sec/introduction}
-	\input{sec/acknowledgment}
-	\input{aux/displaycmds}
-	\nocite{*}
-	\sloppy
-	\printbibliography
+\thispagestyle{empty}
+Define for $i \in \N$ the linear map $\rC_i \colon A^{\ot 4} \to A$ by
+\[
+\rC_i(\alpha \ot \alpha' \ot \beta \ot \beta') \ =\
+(\alpha \cup_0 \beta) \cup_i (\alpha' \cup_0 \beta') \ +
+\sum_{i=j+k} (\alpha \cup_j \alpha') \cup_0 (12)^j(\beta \cup_k \beta').
+\]
+When $\alpha = \alpha'$ and $\beta = \beta'$ this expression is a lift of the Cartan relation to the cochain level.
+
+Using the notation of \cite{medina2020cartan}, recall that a Cartan coboundary for cocycles $\alpha$ and $\beta$ is given by
+\[
+\zeta_i(\alpha,\beta) = H(\tilde x_i)(\alpha \ot \alpha \ot \beta \ot \beta),
+\]
+where $H \colon \cE(2) \to \cE(4)$ is an explicitly constructed homotopy between certain maps $(23)F$ and $G$ satisfying $(12)(34) \circ H = H \circ (12)$.
+Explicitly,
+\begin{equation}\label{e:homotopy}
+	\bd \circ \, H + H \! \circ \bd = (23)F + G.
+\end{equation}
+The importance of this is that, for $i\in\N$, the image of $\big((23)F + G\big)(\tilde{x}_i)$ via the given (and implicit) chain map $\cE(4) \to \Hom(A^{\ot 4}, A)$ is $\rC_i$.
+We will abuse notation and infer the presence of this latter map from the context.
+After evaluating \cref{e:homotopy} on $\tilde x_i$ we have
+\begin{equation}\label{e:homotopy evaluated}
+	\delta \circ H(\tilde x_i) + H(\tilde x_i) \circ \delta + \big(1+(12)(34)\big) H(\tilde x_{i-1}) = \rC_i
+\end{equation}
+in $\Hom(A^{\ot 4}, A)$.
+Notice that $\big(1+(12)(34)\big)(\alpha \ot \alpha \ot \beta \ot \beta) = 0$.
+
+Let
+\[
+\gamma = \delta\alpha \ot \alpha \ot \beta \ot \beta + \alpha \ot \alpha \ot \delta\beta \ot \beta.
+\]
+Then
+\begin{equation}
+\begin{split}
+	H(\tilde x_i) \circ \delta (\alpha \ot \alpha \ot \beta \ot \beta) & =
+	H(\tilde x_i) \big(1 + (12)(34)\big)(\gamma) \\ & =
+	H (\bd \tilde x_{i+1})(\gamma) \\ & =
+	\big(\delta \circ H(\tilde x_{i+1}) + H(\tilde x_{i+1}) \circ \delta + \rC_{i+1}\big) (\gamma).
+\end{split}
+\end{equation}
+
+We have that
+\begin{align*}
+	\delta\gamma &=
+	\delta\alpha \ot \delta\alpha \ot \beta \ot \beta \ +\
+	\alpha \ot \alpha \ot \delta\beta \ot \delta\beta \\ &+
+	\big(1+(12)(34)\big)(\delta\alpha \ot \alpha \ot \beta \ot \delta\beta).
+\end{align*}
+Also, as before,
+\begin{equation*}
+	\big(1+(12)(34)\big)H(\tilde{x}_{i+1}) =
+	\delta \circ H(\tilde x_{i+2}) + H(\tilde x_{i+2}) \circ \delta + \rC_{i+2}.
+\end{equation*}
+Putting everything together after skipping some similar steps we have
+\begin{multline*}
+	(\delta H_i + \rC_i)(\alpha \alpha \beta \beta) +
+	(\delta H_{i+1} + \rC_{i+1})(\delta\alpha \alpha \beta \beta + \alpha \alpha \delta\beta \beta) +
+	(\delta H_{i+2} + \rC_{i+2})(\delta\alpha \alpha \beta \delta\beta) \\ +\
+	H_{i+1}(\delta\alpha \delta\alpha \beta \beta + \alpha \alpha \delta\beta \delta\beta) +
+	H_{i+2}(\delta\alpha \delta\alpha \beta \delta\beta + \delta\alpha \alpha \delta\beta \delta\beta) = 0,
+\end{multline*}
+where $H_k$ is short for $H(\tilde{x}_k)$ and we are omitting tensor products and composition symbols.
+If both $\alpha$ and $\beta$ are cocycles this expression recovers the main contribution of \cite{medina2020cartan}.
+
+\sloppy
+\printbibliography
 \end{document}
